@@ -25,28 +25,34 @@ init python:
 # The game starts here.
 
 label start:
+    ""
     window hide
-#    image bg bedroom1 = im.Scale("images/anim/bg/green/001.png", 496, 368)
-#    scene bg bedroom1
-    image greenbg2 = Animation("images/anim/bg/")
-    scene greenbg2
-
+    image bg noisea =Animation("images/anim/bg/noise")
+#    image bg noiseb = im.Scale(bg noisea, 496, 368)
+    scene bg noisea:
+        zoom 1.8
+        xalign 0.5
     image test bedroom = "images/bg/bedroom.png"
-
     show test bedroom:
+        alpha 0.0
+        ease 0.1 alpha 1.0
         zoom 1.0
         yalign 0.2
         xalign 0.5
-    "text"
-
-    pause 100
+        ease 0.8 zoom .72
+    pause .9
+    image bggg = "images/white.png"
+    scene bggg
+    with dissolve
+    pause .5
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
-    play music dream fadeout 1
+    play music dream fadeout 2
 
-    image greenbg = Animation("images/anim/bg/")
-    scene greenbg
+    image bg green = Animation("images/anim/bg/green")
+    scene bg green
+    with fade
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
