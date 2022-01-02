@@ -6,7 +6,7 @@
 define e = Character("Eileen")
 define fps = 30
 define config.nearest_neighbor = True
-
+$renpy.maximum_framerate(30)
 init python:
     def Animation(prefix, fps=30, trans=None):
         import os
@@ -29,6 +29,7 @@ transform zoom_dissolve:
 # The game starts here.
 
 label start:
+    window hide
     ""
     window hide
     pause 1
@@ -78,17 +79,41 @@ label start:
     image trix welcome3 = Animation("images/anim/trix/welcome3/")
     show trix welcome3
 
-    image overlay cast:
+    image overlay cast1:
         Animation("images/anim/overlay/cast1/start/", (66/2.2))
         pause (49/(66/2.2))
         Animation("images/anim/overlay/cast1/loop/", (66/2.2))
-    show overlay cast
+    show overlay cast1
 
     "THE SPELL THAT TURNS YOU INTO\nA PONY LASTS THREE DAYS."
 
-
+    image overlay cast2:
+        Animation("images/anim/overlay/cast2/", (46/2))
+        pause 2.0
+        "images/anim/overlay/cast2/60.png"
+        pause 99999
+    show overlay cast2
     "AFTER THAT, YOU'LL TURN BACK\nTO HUMAN. HAVE A GOOD TIME."
 
+    $renpy.pause(2.0, hard = True)
+    image bg ponyday = "images/bg/ponyday.png"
+    scene bg ponyday:
+
+
+    image intro:
+        Animation("images/anim/red/transform/start/", (189/6.3))
+        pause (160/(189/6.3))
+        Animation("images/anim/red/transform/loop/", (189/6.3))
+    show intro:
+        xalign 0.0
+
+    $renpy.pause(6.1, hard = True)
+
+    "CUTE. NOW GO. i will STAY\nAROUND HERE FOR A BIT."
+
+    $renpy.pause(0.3, hard = True)
+
+    "THE GREAT AND POWERFUL TRIXIE\nSHALL SPEAK TO YOU LATER."
 
 
 
