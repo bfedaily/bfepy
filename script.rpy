@@ -22,7 +22,6 @@ init python:
             chain.extend([fn, pause, trans])
         return renpy.display.anim.TransitionAnimation(*chain)
 
-
 transform zoom_dissolve:
     alpha 0.0 zoom 1.2
     linear 2 zoom 1.0 alpha 1.0
@@ -53,22 +52,26 @@ label start:
         ease 0.2 alpha 0.0
 
     pause 1
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+
     play music dream fadeout 2
 
     image bg green = Animation("images/anim/bg/green")
     scene bg green
     with Fade(0.5, 0.5, 0.5, color="#000")
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+    screen dont_skip():
+        key "mouseup_1" action NullAction()
+        key "K_RETURN" action NullAction()
+        key "K_SPACE" action NullAction()
+        key "K_KP_ENTER" action NullAction()
+        key "joy_dismiss" action NullAction()
+
     image trix welcome1 = Animation("images/anim/trix/welcome1/", (28/0.93))
     show trix welcome1 at zoom_dissolve, center
-    "HEY, HEY!!! ARE YOU ASLEEP?\nC\'MON! ANSWER THE GREAT TRIXIE!."
-    $renpy.pause(2.0, hard = True)
+    "HEY, HEY!!! ARE YOU ASLEEP?\nC\'MON! ANSWER THE GREAT TRIXIE!.{w=2.4}"
+    show screen dont_skip()
+    $renpy.pause(2.4, hard = True)
+    hide screen dont_skip
     image trix welcome2:
         Animation("images/anim/trix/welcome2/start/", (39/1.3))
         pause (11/(39/1.3))
@@ -89,13 +92,14 @@ label start:
 
     image overlay cast2:
         Animation("images/anim/overlay/cast2/", (46/2))
-        pause 2.0
+        pause 1.9
         "images/anim/overlay/cast2/60.png"
         pause 99999
     show overlay cast2
+    $renpy.pause(1.9, hard = True)
     "AFTER THAT, YOU'LL TURN BACK\nTO HUMAN. HAVE A GOOD TIME."
 
-    $renpy.pause(2.0, hard = True)
+
     image bg ponyday = "images/bg/ponyday.png"
     scene bg ponyday:
 
@@ -107,7 +111,7 @@ label start:
     show intro:
         xalign 0.0
 
-    $renpy.pause(6.1, hard = True)
+    $renpy.pause(((160-26)/(189/6.3)), hard = True)
 
     "CUTE. NOW GO. i will STAY\nAROUND HERE FOR A BIT."
 
