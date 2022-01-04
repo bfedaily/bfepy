@@ -6,6 +6,9 @@
 define e = Character("Eileen")
 define fps = 30
 define config.nearest_neighbor = True
+style default:
+    antialias False
+    line_spacing 2
 $renpy.maximum_framerate(30)
 init python:
     def Animation(prefix, fps=30, trans=None):
@@ -17,7 +20,7 @@ init python:
                 continue
             basename = os.path.basename(fn)
             base, ext = os.path.splitext(basename)
-            if not ext.lower() in [ ".jpg", ".jpeg", ".png", ".webp" ]:
+            if not ext.lower() in [ ".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"]:
                 continue
             chain.extend([fn, pause, trans])
         return renpy.display.anim.TransitionAnimation(*chain)
@@ -53,7 +56,7 @@ label start:
 
     pause 1
 
-    play music dream fadeout 2
+    play music "audio/dream.ogg"
 
     image bg green = Animation("images/anim/bg/green")
     scene bg green
@@ -68,10 +71,9 @@ label start:
 
     image trix welcome1 = Animation("images/anim/trix/welcome1/", (28/0.93))
     show trix welcome1 at zoom_dissolve, center
-    "HEY, HEY!!! ARE YOU ASLEEP?\nC\'MON! ANSWER THE GREAT TRIXIE!.{w=2.4}"
-    show screen dont_skip()
     $renpy.pause(2.4, hard = True)
-    hide screen dont_skip
+    "HEY, HEY!!! ARE YOU ASLEEP?\n C'MON! ANSWER THE GREAT TRIXIE!."
+
     image trix welcome2:
         Animation("images/anim/trix/welcome2/start/", (39/1.3))
         pause (11/(39/1.3))
@@ -88,6 +90,7 @@ label start:
         Animation("images/anim/overlay/cast1/loop/", (66/2.2))
     show overlay cast1
 
+
     "THE SPELL THAT TURNS YOU INTO\nA PONY LASTS THREE DAYS."
 
     image overlay cast2:
@@ -96,13 +99,14 @@ label start:
         "images/anim/overlay/cast2/60.png"
         pause 99999
     show overlay cast2
-    $renpy.pause(1.9, hard = True)
+
     "AFTER THAT, YOU'LL TURN BACK\nTO HUMAN. HAVE A GOOD TIME."
 
+    image bg intro = "images/bg/ponyday.png"
+    scene bg intro:
+    play music "audio/89_main_theme_start.ogg" noloop
 
-    image bg ponyday = "images/bg/ponyday.png"
-    scene bg ponyday:
-
+    $renpy.music.queue("audio/90_main_theme.ogg", channel=u'music', loop=True, clear_queue=True, fadein=0, tight=True)
 
     image intro:
         Animation("images/anim/red/transform/start/", (189/6.3))
@@ -114,12 +118,59 @@ label start:
     $renpy.pause(((160-26)/(189/6.3)), hard = True)
 
     "CUTE. NOW GO. i will STAY\nAROUND HERE FOR A BIT."
-
-    $renpy.pause(0.3, hard = True)
-
     "THE GREAT AND POWERFUL TRIXIE\nSHALL SPEAK TO YOU LATER."
 
 
+
+    #image bg day1_trix = "images/bg/ponyday.png"
+    #scene bg day1_trix:
+
+    scene bg intro:
+        xalign 1
+    image trixbook1:
+        Animation("images/anim/trix/bookread/loop/", (30))
+
+    image arrow_r:
+        Animation("images/anim/UI/arrow_r/", (30))
+    image arrow_l:
+        Animation("images/anim/UI/arrow_l/", (30))
+    image arrow_u:
+        Animation("images/anim/UI/arrow_u/", (30))
+    image arrow_d:
+        Animation("images/anim/UI/arrow_d/", (30))
+
+    screen MapUI:
+        imagebutton:
+            xpos 442
+            ypos 314
+            idle "arrow_r"
+            hover "images/UI/arrow_r.webp"
+            action NullAction()
+ #           action Jump("house1_pressed")
+
+        imagebutton:
+            xpos 16
+            ypos 314
+            idle "arrow_l"
+            hover "images/UI/arrow_l.webp"
+            action NullAction()
+#            action Jump("house1_pressed")
+
+        imagebutton:
+            xpos 224
+            ypos 218
+            idle "arrow_u"
+            hover "images/UI/arrow_u.webp"
+            action NullAction()
+#            action Jump("house1_pressed")
+
+        imagebutton:
+            xpos 312
+            ypos 221
+            idle "trixbook1"
+#            action Jump("house1_pressed")
+    call screen MapUI
+    ""
 
 
     # This ends the game.

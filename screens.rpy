@@ -101,13 +101,6 @@ screen say(who, what):
     window:
         id "window"
 
-        if who is not None:
-
-            window:
-                id "namebox"
-                style "namebox"
-                text who id "who"
-
         text what id "what"
 
 
@@ -131,12 +124,13 @@ style namebox_label is say_label
 
 
 style window:
-    xalign 0.5
+    xalign 1
     xfill True
     yalign gui.textbox_yalign
     ysize gui.textbox_height
+    xsize 496*2
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Image("gui/textbox.png", xalign=1, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos

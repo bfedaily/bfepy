@@ -64,10 +64,10 @@ define gui.name_text_font = "7_Emulogic.ttf"
 define gui.interface_text_font = "7_Emulogic.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 14
+define gui.text_size = 16
 
 ## The size of character names.
-define gui.name_text_size = 12
+define gui.name_text_size = 0
 
 ## The size of text in the game's user interface.
 define gui.interface_text_size = 9
@@ -95,7 +95,8 @@ define gui.game_menu_background = "images/bedroom.png"
 ## time.
 
 ## The height of the textbox containing dialogue.
-define gui.textbox_height = 72
+define gui.textbox_height = 56
+define gui.textbox_width = 496
 
 ## The placement of the textbox vertically on the screen. 0.0 is the top, 0.5 is
 ## center, and 1.0 is the bottom.
@@ -104,7 +105,7 @@ define gui.textbox_yalign = 1.0
 
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
-define gui.name_xpos = 93
+define gui.name_xpos = 0
 define gui.name_ypos = 0
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
@@ -118,7 +119,7 @@ define gui.namebox_height = None
 
 ## The borders of the box containing the character's name, in left, top, right,
 ## bottom order.
-define gui.namebox_borders = Borders(5, 5, 5, 5)
+define gui.namebox_borders = Borders(0, 0, 0, 0)
 
 ## If True, the background of the namebox will be tiled, if False, the
 ## background of the namebox will be scaled.
@@ -128,16 +129,16 @@ define gui.namebox_tile = False
 ## The placement of dialogue relative to the textbox. These can be a whole
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
-define gui.dialogue_xpos = 10
-define gui.dialogue_ypos = 10
+define gui.dialogue_xpos = (496/2)
+define gui.dialogue_ypos = 11-4
 
 ## The maximum width of dialogue text, in pixels.
-define gui.dialogue_width = 476
+define gui.dialogue_width = 4960
 
 ## The horizontal alignment of the dialogue text. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
-define gui.dialogue_text_xalign = 0.0
-
+define gui.dialogue_text_xalign = 0.5
+define gui.dialogue_text_yalign = 1
 
 
 ## Buttons #####################################################################
@@ -377,10 +378,10 @@ define gui.nvl_spacing = 4
 
 ## The position, width, and alignment of the label giving the name of the
 ## speaking character.
-define gui.nvl_name_xpos = 167
+define gui.nvl_name_xpos = 0
 define gui.nvl_name_ypos = 0
-define gui.nvl_name_width = 59
-define gui.nvl_name_xalign = 1.0
+define gui.nvl_name_width = 0
+define gui.nvl_name_xalign = 0
 
 ## The position, width, and alignment of the dialogue text.
 define gui.nvl_text_xpos = 175
@@ -428,7 +429,7 @@ init python:
 
         ## Font sizes.
         gui.text_size = 12
-        gui.name_text_size = 14
+        gui.name_text_size = 0
         gui.notify_text_size = 10
         gui.interface_text_size = 12
         gui.button_text_size = 12
@@ -436,9 +437,9 @@ init python:
 
         ## Adjust the location of the textbox.
         gui.textbox_height = 93
-        gui.name_xpos = 31
+        gui.name_xpos = 0
         gui.dialogue_xpos = 35
-        gui.dialogue_width = 427
+        gui.dialogue_width = 4270
 
         ## Change the size and spacing of various things.
         gui.slider_size = 14
@@ -461,8 +462,8 @@ init python:
         ## NVL-mode.
         gui.nvl_height = 66
 
-        gui.nvl_name_width = 119
-        gui.nvl_name_xpos = 126
+        gui.nvl_name_width = 0
+        gui.nvl_name_xpos = 0
 
         gui.nvl_text_width = 355
         gui.nvl_text_xpos = 134
