@@ -121,9 +121,7 @@ label start:
     "THE GREAT AND POWERFUL TRIXIE\nSHALL SPEAK TO YOU LATER."
 
 
-
-    #image bg day1_trix = "images/bg/ponyday.png"
-    #scene bg day1_trix:
+label pony1:
 
     scene bg intro:
         xalign 1
@@ -153,8 +151,8 @@ label start:
             ypos 314
             idle "arrow_l"
             hover "images/UI/arrow_l.webp"
-            action NullAction()
-#            action Jump("house1_pressed")
+#            action NullAction()
+            action Jump("apple1")
 
         imagebutton:
             xpos 224
@@ -172,7 +170,87 @@ label start:
     call screen MapUI
     ""
 
+label apple1:
+    image bg apple1 = "images/bg/apple1.png"
+    scene bg apple1:
+        xalign 1
 
+
+    screen MapUI2:
+        imagebutton:
+            xpos 442
+            ypos 314
+            idle "arrow_r"
+            hover "images/UI/arrow_r.webp"
+#            action NullAction()
+            action Jump("pony1")
+
+        imagebutton:
+            xpos 16
+            ypos 314
+            idle "arrow_l"
+            hover "images/UI/arrow_l.webp"
+#            action NullAction()
+            action Jump("apple1")
+
+        imagebutton:
+            xpos 224
+            ypos 218
+            idle "arrow_u"
+            hover "images/UI/arrow_u.webp"
+#            action NullAction()
+            action Jump("apple2")
+
+    call screen MapUI2
+
+label apple2:
+    image bg apple2 = "images/bg/apple2.png"
+    scene bg apple2:
+        xalign 1
+
+    screen apple2:
+        imagebutton:
+            xpos 224
+            ypos 218
+            idle "arrow_u"
+            hover "images/UI/arrow_u.webp"
+#            action NullAction()
+            action Jump("apple3")
+
+        imagebutton:
+            xpos 224
+            ypos 314
+            idle "arrow_d"
+            hover "images/UI/arrow_d.webp"
+#            action NullAction()
+            action Jump("apple1")
+
+
+    call screen apple2
+
+label apple3:
+    image bg apple3 = "images/bg/apple3.png"
+    scene bg apple3:
+        xalign 1
+
+    screen apple3:
+        imagebutton:
+            xpos 224
+            ypos 218
+            idle "arrow_u"
+            hover "images/UI/arrow_u.webp"
+            action NullAction()
+#            action Jump("house1_pressed")
+
+        imagebutton:
+            xpos 224
+            ypos 314
+            idle "arrow_d"
+            hover "images/UI/arrow_d.webp"
+#            action NullAction()
+            action Jump("apple2")
+
+    call screen apple3
     # This ends the game.
 
     return
